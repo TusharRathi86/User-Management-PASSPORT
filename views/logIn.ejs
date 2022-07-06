@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/logIn.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Create Account</h2>
+        </div>
+        <form id="myform" class="form" name="userform" method="post" action="/logIn">
+            <div class="form-control">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter your username" id="username" name="username"
+                    onpaste="return false" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="username">Password</label>
+                <input type="password" placeholder="Enter your password" id="password" name="password" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="username">Confirm Password</label>
+                <input type="password" placeholder="Confirm your password" id="cpassword" name="cpassword" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <button>Submit</button>
+            <center>
+                <% if(locals.logout){ %>
+                    <p>
+                        <%= logout %>
+                    </p>
+                    <% } %>
+                <% if(locals.homeMessage){ %>
+                    <p>
+                        <%= homeMessage %>
+                    </p>
+                    <% } %>
+            </center>
+            <center>
+                <%- include('./include/flashMessages') -%>
+            </center>
+        </form>
+    </div>
+
+    <!-- SOCIAL PANEL HTML -->
+    <div class="social-panel-container">
+        <div class="social-panel">
+            <a target="_blank" href=""></a>
+            </p>
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+            <h4>Get in touch on</h4>
+            <ul>
+                <li>
+                    <a href="/create" target="_blank">
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button class="floating-btn">
+        Get in Touch
+    </button>
+
+    <div class="floating-text">
+        Hi! hope you're doing good.
+    </div>
+    <script type="text/javascript" src="/js/logIn.js">
+    </script>
+</body>
+
+</html>

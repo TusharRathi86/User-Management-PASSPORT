@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Student-Management </title>
+</head>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+
+    <center>
+        <h2> User List </h2>
+        <table style="width:100%">
+            <tr>
+                <th> Name </th>
+                <th> Email </th>
+                <th> Phone Number </th>
+                <th> Adddress </th>
+                <th> Username </th>
+                <th> Image </th>
+                <th> Update/Delete </th>
+            </tr>
+            <% for(var i=0; i < data.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= data[i].name %>
+                    </td>
+                    <td>
+                        <%= data[i].email %>
+                    </td>
+                    <td>
+                        <%= data[i].phoneNumber %>
+                    </td>
+                    <td>
+                        <%= data[i].address %>
+                    </td>
+                    <td>
+                        <%= console.log(data[i].username) %>
+                    </td>
+                    <td>
+                        <center>
+                            <img src="/images/<%=data[i].image %>" width="40" height="40">
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="/user/change_form/<%= data[i].id %>">
+                                <button> Update </button>
+                            </a>
+                            <a href="/user/deleteUser/<%= data[i].id %>">
+                                <button> Delete </button>
+                            </a>
+                        </center>
+                    </td>
+                </tr>
+                </tr>
+                <%}%>
+        </table>
+    </center>
+    <br />
+    <a href="/user/newUser">
+        <button> Insert User </button>
+    </a>
+    <a href="/logout">
+        <button> LogOut </button>
+    </a>
+    <br>
+    <center>
+        <p>
+            <u>ID:</u>
+            <%= person.id %> is successfully logged In<br>
+                <u>Name: </u><%= person.username %> is successfully logged In
+        </p>
+    </center>
+    <center>
+        <% if(locals.logout){ %>
+            <p>
+                <%= logout %>
+            </p>
+            <% } %>
+    </center>
+    <center>
+        <%- include('./include/flashMessages') -%>
+    </center>
+
+</body>
+
+</html>

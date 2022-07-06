@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title> Create Login Credentials </title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style type="text/css" media="screen">
+        body {
+            text-decoration-color: rgb(0, 0, 0);
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container"><br>
+        <h1 class="text-success text-center"><u>Create Login Credentials</u></h1><br>
+        <div class="col-lg-8 m-auto d-block">
+            <form action="/createLogin" id="form" name="userForm" onsubmit="return validation()" method="post"
+                class="bg-light" enctype="multipart/form-data">
+
+                <!-- <input type="hidden" id="id" name="user_id"> -->
+                <div class="form-group" id="username">
+                    <label> Username: </label><br>
+                    <input type="text" name="username" class="form-control">
+                    <span class="text-danger formError"></span>
+                </div>
+
+                <div class="form-group" id="password">
+                    <label> Password: </label><br>
+                    <input type="password" name="password" class="form-control">
+                    <span class="text-danger formError"></span>
+                </div>
+
+                <center>
+                    <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                    <a href="/user/newUser">
+                        <input type="button" value="Log-In" class="btn btn-success">
+                    </a>
+                </center>
+            </form>
+        </div>
+    </div>
+
+    <center>
+        <%- include('./include/flashMessages') -%>
+    </center>
+    <%- include('./include/footer') -%>
