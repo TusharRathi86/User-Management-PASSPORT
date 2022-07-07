@@ -3,6 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 const { Sequelize, DataTypes } = require('sequelize');
+const logininfo = require('../models/logininfo');
+const userinfo = require('../models/userinfo');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
@@ -39,8 +41,8 @@ db.userinfos = require('../models/userinfo')(sequelize, DataTypes)
 db.logininfos = require('../models/logininfo')(sequelize, DataTypes)
 
 // Associations
-db.userinfos.hasMany(db.logininfos, { foreignKey: 'user_id' })
-// db.logininfos.belongsTo(db.userinfos, { foreignKey: 'user_id' })
+db.logininfos.hasMany(db.userinfos, { foreignKey: 'userId' })
+db.userinfos.belongsTo(db.logininfos, { foreignKey: 'userId' })
 
 // Synchronization
 db.sequelize.sync({ force: false })

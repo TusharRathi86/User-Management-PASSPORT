@@ -3,6 +3,7 @@ const passport = require('passport')
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login')
 const router = express.Router()
 const controller = require('../controllers/login.controller')
+const username = require('../middleware/usernameVerification')
 
 // Render logIn page
 router.get('/', (req, res) => { return res.render('logIn') },)
@@ -11,7 +12,7 @@ router.get('/', (req, res) => { return res.render('logIn') },)
 router.get('/create', (req, res) => { return res.render('createLogin') })
 
 // Create login credentails
-router.post('/createLogin', controller.createLoginCredentials)
+router.post('/createLogin', username.duplicateUsername, controller.createLoginCredentials)
 
 // Posting
 router.post('/logIn', ensureLoggedOut({ redirectTo: '/' }), passport.authenticate('local', {

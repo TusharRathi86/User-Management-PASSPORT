@@ -42,18 +42,22 @@
                 <small>Error message</small>
             </div>
             <button>Submit</button>
+
             <center>
+                <!-- Displays logout message -->
                 <% if(locals.logout){ %>
                     <p>
                         <%= logout %>
                     </p>
                     <% } %>
-                <% if(locals.homeMessage){ %>
-                    <p>
-                        <%= homeMessage %>
-                    </p>
-                    <% } %>
+                        <!-- Displays credentails created message -->
+                        <% if(locals.credentialsMessage) { %>
+                            <p>
+                                <%= credentialsMessage %>
+                            </p>
+                            <% } %>
             </center>
+
             <center>
                 <%- include('./include/flashMessages') -%>
             </center>
@@ -63,33 +67,33 @@
     <!-- SOCIAL PANEL HTML -->
     <div class="social-panel-container">
         <div class="social-panel">
-            <a target="_blank" href=""></a>
+            <a  href=""></a>
             </p>
             <button class="close-btn"><i class="fas fa-times"></i></button>
             <h4>Get in touch on</h4>
             <ul>
                 <li>
-                    <a href="/create" target="_blank">
+                    <a href="/create" >
                         <i class="fa-solid fa-plus"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="" target="_blank">
+                    <a href="" >
                         <i class="fab fa-twitter"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="" target="_blank">
+                    <a href="" >
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="" target="_blank">
+                    <a href="" >
                         <i class="fab fa-facebook"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="" target="_blank">
+                    <a href="" >
                         <i class="fab fa-instagram"></i>
                     </a>
                 </li>

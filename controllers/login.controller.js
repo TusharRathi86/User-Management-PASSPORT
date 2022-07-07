@@ -1,15 +1,30 @@
 const db = require('../models')
 const User = db.logininfos
+const bcrypt = require('bcrypt')
+const { validationResult } = require('express-validator')
 
 exports.createLoginCredentials = async (req, res) => {
-    try {
-        await User.create({
-            username: req.body.username,
-            password: req.body.password,
+
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        errors.array().forEach((error) => {
+            req.flash('danger', error.msg)
         })
-        return res.render('logIn', { homeMessage: 'Credentails created...!!' })
-    } catch (err) {
-        console.log(err)
-        return res.send("ERROR")
+        return res.redirect('/createLogin')
+    }
+
+    if (errors.isEmpty()) {
+        try {
+            // Hashed password 
+            const hashPassword = await bcrypt.hash(req.body.password, 10)
+            User.create({
+                username: req.body.username,
+                password: hashPassword,
+            })
+            return res.render('logIn', { credentialsMessage: 'User credentials created successfully' })
+        } catch (error) {
+            console.log(error)
+            return res.send('error')
+        }
     }
 }

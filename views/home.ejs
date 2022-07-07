@@ -44,7 +44,7 @@
                         <%= data[i].address %>
                     </td>
                     <td>
-                        <%= console.log(data[i].username) %>
+                        <%= data[i].logininfo.username %>
                     </td>
                     <td>
                         <center>
@@ -73,14 +73,16 @@
     <a href="/logout">
         <button> LogOut </button>
     </a>
+
     <br>
+
     <center>
         <p>
-            <u>ID:</u>
-            <%= person.id %> is successfully logged In<br>
-                <u>Name: </u><%= person.username %> is successfully logged In
+            <u>Name:</u>
+            <%= person.username %> is successfully logged In
         </p>
     </center>
+
     <center>
         <% if(locals.logout){ %>
             <p>
@@ -88,6 +90,7 @@
             </p>
             <% } %>
     </center>
+
     <center>
         <%- include('./include/flashMessages') -%>
     </center>

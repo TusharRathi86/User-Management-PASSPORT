@@ -32,3 +32,22 @@
             <%= person.username %> is successfully logged In
         </p>
     </center>
+
+==========================================================================================================================
+
+ <input type="hidden" name="id" value="<%= console.log(person.id) %>">
+
+ =========================================================================================================================
+
+  User.findAll({
+        // attributes: ['username'],
+        include: [{
+            model: logUser,
+            attributes: ['username'],
+            required: true
+        }],
+        where: { userId: req.user.id },
+
+        // id: req.user.id
+    }).then((users) => res.render('home', { person, data: users }))
+    // res.render('home', { person, data: users })

@@ -2,14 +2,20 @@ const db = require('../models')
 const User = db.userinfos
 const logUser = db.logininfos
 const { validationResult } = require('express-validator')
-const bcrypt = require('bcrypt')
 
 exports.viewUsers = (req, res) => {
-    User.findAll({ include: [{ model: logUser, attributes:['username']}] })
-        .then(users => { return res.render('home', { person, data: users }) })
 
     const person = req.user
     console.log(person)
+
+    User.findAll({
+        include: [{
+            model: logUser,
+            attributes: ['username'],
+            required: true,
+        }],
+        where: { userId: req.user.id },
+    }).then((users) => res.render('home', { person, data: users }))
 }
 
 exports.addUser = async (req, res) => {
@@ -23,24 +29,13 @@ exports.addUser = async (req, res) => {
     else {
         // User Table
         await User.create({
+            userId: req.user.id,
             name: req.body.name,
             email: req.body.email,
             phoneNumber: req.body.phoneNumber,
             address: req.body.address,
             image: req.file.filename,
         })
-        // LogIn info table
-        try {
-            // Hashed password 
-            const hashPassword = await bcrypt.hash(req.body.password, 10)
-            logUser.create({
-                user_id: req.user.id,
-                username: req.body.username,
-                password: hashPassword,
-            })
-        } catch {
-            return res.redirect('/user')
-        }
         req.flash('success', `${req.body.name} has been added successfully`)
         return res.redirect('/user')
     }

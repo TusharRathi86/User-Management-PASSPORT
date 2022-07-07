@@ -29,10 +29,8 @@
     <div class="container"><br>
         <h1 class="text-success text-center"><u>Create Login Credentials</u></h1><br>
         <div class="col-lg-8 m-auto d-block">
-            <form action="/createLogin" id="form" name="userForm" onsubmit="return validation()" method="post"
-                class="bg-light" enctype="multipart/form-data">
+            <form action="/createLogin" id="form" name="userForm" method="post" class="bg-light">
 
-                <!-- <input type="hidden" id="id" name="user_id"> -->
                 <div class="form-group" id="username">
                     <label> Username: </label><br>
                     <input type="text" name="username" class="form-control">
@@ -47,7 +45,7 @@
 
                 <center>
                     <input type="submit" name="submit" value="Submit" class="btn btn-success">
-                    <a href="/user/newUser">
+                    <a href="/">
                         <input type="button" value="Log-In" class="btn btn-success">
                     </a>
                 </center>
