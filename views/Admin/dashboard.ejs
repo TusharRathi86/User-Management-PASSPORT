@@ -28,7 +28,7 @@
 <body>
 
     <center>
-        <h2> User List </h2>
+        <h2> All User List </h2>
         <table style="width:100%">
             <tr>
                 <th> Name </th>
@@ -37,7 +37,6 @@
                 <th> Adddress </th>
                 <th> Username </th>
                 <th> Image </th>
-                <th> Update/Delete </th>
             </tr>
             <% for(var i=0; i < data.length; i++) { %>
                 <tr>
@@ -61,57 +60,30 @@
                             <img src="/images/<%=data[i].image %>" width="40" height="40">
                         </center>
                     </td>
-                    <td>
-                        <center>
-                            <a href="/user/change_form/<%= data[i].id %>">
-                                <button> Update </button>
-                            </a>
-                            <a href="/user/deleteUser/<%= data[i].id %>">
-                                <button> Delete </button>
-                            </a>
-                        </center>
-                    </td>
-                </tr>
                 </tr>
                 <%}%>
         </table>
     </center>
+
     <br>
 
-    <a href="/user/newUser">
-        <button class="btn btn-success"> Insert User </button>
+    <a href="/user">
+        <button class="btn btn-success"> My Deatils </button>
     </a>
 
     <a href="/logout">
         <button class="btn btn-success"> LogOut </button>
     </a>
 
-    <% if(person.Role==role) { %>
-        <a href="/admin/dashboard">
-            <button class="btn btn-success"> View User List </button>
-        </a>
-        <% } %>
+    <br>
 
-            <br>
-
-            <center>
-                <p>
-                    <u>Name:</u>
-                    <%= person.username %> is successfully logged In
-                </p>
-            </center>
-
-            <center>
-                <% if(locals.logout){ %>
-                    <p>
-                        <%= logout %>
-                    </p>
-                    <% } %>
-            </center>
-
-            <center>
-                <%- include('./include/flashMessages') -%>
-            </center>
+    <center>
+        <% if(locals.logout){ %>
+            <p>
+                <%= logout %>
+            </p>
+            <% } %>
+    </center>
 
 </body>
 

@@ -51,3 +51,7 @@
         // id: req.user.id
     }).then((users) => res.render('home', { person, data: users }))
     // res.render('home', { person, data: users })
+
+============================================================================================================================
+
+for user another middleware has to there which authenticates the users only based on their role 

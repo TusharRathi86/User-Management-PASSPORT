@@ -1,6 +1,5 @@
 const form = document.getElementById('myform');
 const username = document.getElementById('username');
-const email = document.getElementById('email');
 const password = document.getElementById('password');
 const cpassword = document.getElementById('cpassword');
 
@@ -23,11 +22,6 @@ function isUsername(username) {
     return /^[a-zA-Z0-9]+$/.test(username);
 }
 
-// Regular expression for email addresses
-function isEmail(email) {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-}
-
 // Regular expression for password
 function isPassword(password) {
     return /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password);
@@ -37,7 +31,6 @@ function checkInputs() {
 
     // trim to remove the whitespaces
     const usernameValue = document.forms['userform']["username"].value.trim();
-    const emailValue = document.forms['userform']["email"].value.trim();
     const passwordValue = document.forms['userform']["password"].value.trim();
     const cpasswordValue = document.forms['userform']["cpassword"].value.trim();
 
@@ -53,15 +46,6 @@ function checkInputs() {
     }
     else {
         setSuccessFor(username);
-    }
-
-    // Email
-    if (emailValue === '') {
-        setErrorFor(email, '**Email cannot be blank');
-    } else if (!isEmail(emailValue)) {
-        setErrorFor(email, '**Email format should be abc@gmail.com');
-    } else {
-        setSuccessFor(email);
     }
 
     // Password

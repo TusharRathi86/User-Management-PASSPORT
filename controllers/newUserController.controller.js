@@ -2,6 +2,7 @@ const db = require('../models')
 const User = db.userinfos
 const logUser = db.logininfos
 const { validationResult } = require('express-validator')
+const { roles } = require('../utils/constants')
 
 exports.viewUsers = (req, res) => {
 
@@ -15,7 +16,7 @@ exports.viewUsers = (req, res) => {
             required: true,
         }],
         where: { userId: req.user.id },
-    }).then((users) => res.render('home', { person, data: users }))
+    }).then((users) => res.render('home', { person, role: roles.admin, data: users }))
 }
 
 exports.addUser = async (req, res) => {

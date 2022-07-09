@@ -4,10 +4,12 @@ const PORT = process.env.PORT || 8080
 const flash = require('connect-flash')
 const session = require('express-session')
 const user = require('./routes/newUser.routes')
+const admin = require('./routes/admin.routes')
 const router = require('./routes/logIn.routes')
 const path = require('path')
 const passport = require('passport');
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login')
+const auth = require('./utils/roleAuth')
 require('dotenv').config();
 
 // Middleware 
@@ -37,6 +39,7 @@ require('./utils/passport.auth')
 // Routes
 app.use('/', router)
 // app.use('/user', user)
+app.use('/admin/dashboard', ensureLoggedIn({ redirectTo: '/' }), auth.ensureAdmin, admin)
 app.use('/user', ensureLoggedIn({ redirectTo: '/' }), user)
 
 // View Engine 
