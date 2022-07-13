@@ -8,7 +8,7 @@ const admin = require('./routes/admin.routes')
 const router = require('./routes/logIn.routes')
 const path = require('path')
 const passport = require('passport');
-const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login')
+const { ensureLoggedIn } = require('connect-ensure-login')
 const auth = require('./utils/roleAuth')
 require('dotenv').config();
 

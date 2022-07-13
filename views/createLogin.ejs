@@ -33,13 +33,13 @@
 
                 <div class="form-group" id="username">
                     <label> Username: </label><br>
-                    <input type="text" name="username" class="form-control">
+                    <input type="text" name="username" class="form-control" required>
                     <span class="text-danger formError"></span>
                 </div>
 
                 <div class="form-group" id="password">
                     <label> Password: </label><br>
-                    <input type="password" name="password" class="form-control">
+                    <input type="password" name="password" class="form-control" required> 
                     <span class="text-danger formError"></span>
                 </div>
 
@@ -52,6 +52,8 @@
             </form>
         </div>
     </div>
+
+    <br>
 
     <center>
         <%- include('./include/flashMessages') -%>

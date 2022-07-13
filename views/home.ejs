@@ -1,118 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Student-Management </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<style>
-    table,
-    th,
-    td {
-        border: 1px solid black;
-    }
-</style>
-
-<body>
-
+<%- include('./include/header') -%>
     <center>
         <h2> User List </h2>
-        <table style="width:100%">
-            <tr>
-                <th> Name </th>
-                <th> Email </th>
-                <th> Phone Number </th>
-                <th> Adddress </th>
-                <th> Username </th>
-                <th> Image </th>
-                <th> Update/Delete </th>
-            </tr>
-            <% for(var i=0; i < data.length; i++) { %>
+        <table class="table table-responsive-lg table-bordered table-hover">
+            <thead class="thead-dark text-center">
                 <tr>
-                    <td>
-                        <%= data[i].name %>
-                    </td>
-                    <td>
-                        <%= data[i].email %>
-                    </td>
-                    <td>
-                        <%= data[i].phoneNumber %>
-                    </td>
-                    <td>
-                        <%= data[i].address %>
-                    </td>
-                    <td>
-                        <%= data[i].logininfo.username %>
-                    </td>
-                    <td>
-                        <center>
-                            <img src="/images/<%=data[i].image %>" width="40" height="40">
-                        </center>
-                    </td>
-                    <td>
-                        <center>
-                            <a href="/user/change_form/<%= data[i].id %>">
-                                <button> Update </button>
-                            </a>
-                            <a href="/user/deleteUser/<%= data[i].id %>">
-                                <button> Delete </button>
-                            </a>
-                        </center>
-                    </td>
+                    <th scope="col"> Name </th>
+                    <th scope="col"> Email </th>
+                    <th scope="col"> Phone Number </th>
+                    <th scope="col"> Adddress </th>
+                    <th scope="col"> Username </th>
+                    <th scope="col"> Image </th>
+                    <th scope="col"> Update/Delete </th>
                 </tr>
-                </tr>
-                <%}%>
+            </thead>
+            <tbody class="text-center">
+                <% for(var i=0; i < data.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= data[i].name %>
+                        </td>
+                        <td>
+                            <%= data[i].email %>
+                        </td>
+                        <td>
+                            <%= data[i].phoneNumber %>
+                        </td>
+                        <td>
+                            <%= data[i].address %>
+                        </td>
+                        <td>
+                            <%= data[i].logininfo.username %>
+                        </td>
+                        <td>
+                            <center>
+                                <img src="/images/<%=data[i].image %>" width="70" height="40">
+                            </center>
+                        </td>
+                        <td>
+                            <center>
+                                <a href="/user/change_form/<%= data[i].id %>">
+                                    <button class="btn btn-dark">
+                                        <i class="fa-solid fa-wrench"></i>
+                                    </button>
+                                </a>
+                                <a href="/user/deleteUser/<%= data[i].id %>">
+                                    <button class="btn btn-danger">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </a>
+                            </center>
+                        </td>
+                    </tr>
+                    <%}%>
+            </tbody>
         </table>
     </center>
     <br>
 
-    <a href="/user/newUser">
-        <button class="btn btn-success"> Insert User </button>
-    </a>
-
-    <a href="/logout">
-        <button class="btn btn-success"> LogOut </button>
-    </a>
-
-    <% if(person.Role==role) { %>
-        <a href="/admin/dashboard">
-            <button class="btn btn-success"> View User List </button>
+    <center>
+        <a href="/user/newUser">
+            <button class="btn btn-lg btn-dark">
+                <i class="fa-solid fa-user-plus"></i>
+            </button>
         </a>
-        <% } %>
 
-            <br>
+        <% if(person.Role==role) { %>
+            <a href="/admin/dashboard">
+                <button class="btn btn-lg btn-warning">
+                    <i class="fa-solid fa-list"></i>
+                </button>
+            </a>
+            <% } %>
 
-            <center>
-                <p>
-                    <u>Name:</u>
-                    <%= person.username %> is successfully logged In
-                </p>
-            </center>
+                <a href="/logout">
+                    <button class="btn btn-lg btn-danger">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </a>
+    </center>
 
-            <center>
-                <% if(locals.logout){ %>
-                    <p>
-                        <%= logout %>
-                    </p>
-                    <% } %>
-            </center>
+    <br>
 
-            <center>
-                <%- include('./include/flashMessages') -%>
-            </center>
+    <center>
+        <% if(locals.logout){ %>
+            <p>
+                <%= logout %>
+            </p>
+            <% } %>
+    </center>
 
-</body>
+    <center>
+        <%- include('./include/flashMessages') -%>
+    </center>
+    </body>
 
-</html>
+    </html>

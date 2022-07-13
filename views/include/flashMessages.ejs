@@ -1,8 +1,11 @@
 <% if(locals.messages) { %>
     <% Object.keys(messages).forEach((key)=> { %> <% messages[key].forEach((message)=> { %>
-            <p>
-                <%= message %>
-            </p>
+            <div class="container-lg pt-4 alert col-4 alert-<%= key %>">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <p>
+                    <%= message %>
+                </p>
+            </div>
             <% }) %>
                 <% }) %>
                     <% } %>
