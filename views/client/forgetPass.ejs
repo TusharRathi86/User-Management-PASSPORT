@@ -1,0 +1,47 @@
+<%- include('include/clientHeader') -%>
+    <br>
+    <br>
+    <div class="container"><br>
+        <h1 class="text-success text-center"> Enter Your Email </h1><br>
+        <div class="col-lg-8 m-auto d-block">
+            <form action="/pass/verifyMail" method="post" class="bg-light">
+                <div class="form-group" id="email">
+                    <input type="hidden" name="optId" class="form-control">
+                    <input type="email" name="email" class="form-control">
+                    <span class="text-danger formError"></span>
+                </div>
+                <center>
+                    <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                </center>
+            </form>
+        </div>
+    </div>
+    <div class="container"><br>
+        <h1 class="text-success text-center"> Enter OTP </h1><br>
+        <div class="col-lg-8 m-auto d-block">
+            <form action="/pass/verifyOtp" class="bg-light" method="post">
+                <div class="form-group" id="otpCode">
+                    <input type="text" name="otpCode" maxlength="6" class="form-control">
+                    <span class="text-danger formError"></span>
+                </div>
+
+                <center>
+                    <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                </center>
+            </form>
+        </div>
+    </div>
+    <br>
+    <center>
+        <% if(locals.messagesCre) { %>
+            <div class="container-lg pt-4 alert col-4 alert-<%= key %>">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <p>
+                    <%= messagesCre %>
+                </p>
+                <% } %>
+    </center>
+
+    </body>
+
+    </html>

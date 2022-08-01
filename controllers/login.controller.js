@@ -1,5 +1,5 @@
 const db = require('../models')
-const User = db.logininfos
+const logUser = db.logininfos
 const bcrypt = require('bcrypt')
 const { validationResult } = require('express-validator')
 
@@ -17,10 +17,12 @@ exports.createLoginCredentials = async (req, res) => {
         try {
             // Hashed password 
             const hashPassword = await bcrypt.hash(req.body.password, 10)
-            User.create({
-                username: req.body.username,
+            // logininfos Table
+            logUser.create({
+                email: req.body.email,
                 password: hashPassword,
             })
+
             return res.render('logIn', { credentialsMessage: 'User credentials created successfully' })
         } catch (error) {
             console.log(error)

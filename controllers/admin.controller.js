@@ -9,7 +9,7 @@ exports.allUserList = (req, res) => {
     User.findAll({
         include: [{
             model: logUser,
-            attributes: ['username'],
+            attributes: ['email'],
             required: true,
             where: { Role: { [op.ne]: req.user.Role } },
         }],

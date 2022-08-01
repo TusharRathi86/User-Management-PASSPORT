@@ -1,42 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Student-Management </title>
-
-    <!-- Bootstrap 4 CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Font Awsome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
-<body>
-
+<%- include('include/adminHeader') -%>
     <center>
         <h2> All User List </h2>
         <table class="table table-responsive-lg table-bordered table-hover">
             <thead class="thead-dark text-center">
                 <tr>
                     <th scope="col"> Name </th>
-                    <th scope="col"> Email </th>
                     <th scope="col"> Phone Number </th>
                     <th scope="col"> Adddress </th>
-                    <th scope="col"> Username </th>
+                    <th scope="col"> Email ID </th>
                     <th scope="col"> Image </th>
                 </tr>
             </thead>
@@ -47,16 +18,13 @@
                             <%= data[i].name %>
                         </td>
                         <td>
-                            <%= data[i].email %>
-                        </td>
-                        <td>
                             <%= data[i].phoneNumber %>
                         </td>
                         <td>
                             <%= data[i].address %>
                         </td>
                         <td>
-                            <%= data[i].logininfo.username %>
+                            <%= data[i].logininfo.email %>
                         </td>
                         <td>
                             <center>
@@ -93,6 +61,6 @@
             <% } %>
     </center>
 
-</body>
+    </body>
 
-</html>
+    </html>

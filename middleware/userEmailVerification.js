@@ -1,15 +1,15 @@
 const db = require('../models')
 const User = db.logininfos
 
-checkUsername = (req, res, next) => {
-    // Username
+checkUserEmail = (req, res, next) => {
+    // User email
     User.findOne({
         where: {
-            username: req.body.username,
+            email: req.body.email,
         }
     }).then((user) => {
         if (user) {
-            req.flash('danger', "Failed! Username already exists")
+            req.flash('danger', "Failed! email already exists")
             return res.redirect('/create')
         }
         next()
@@ -17,7 +17,7 @@ checkUsername = (req, res, next) => {
 }
 
 const verify = {
-    duplicateUsername: checkUsername,
+    duplicateUserEmail: checkUserEmail,
 }
 
 module.exports = verify

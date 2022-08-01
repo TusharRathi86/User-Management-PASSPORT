@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 const flash = require('connect-flash')
 const session = require('express-session')
 const user = require('./routes/newUser.routes')
 const admin = require('./routes/admin.routes')
+const passApi = require('./routes/API/forgetPassword.routes')
 const router = require('./routes/logIn.routes')
 const path = require('path')
 const passport = require('passport');
@@ -19,7 +20,7 @@ app.use(express.urlencoded({ extended: true }))
 // Session
 app.use(session({
     resave: false,
-    cookie: { maxAge: 60000, httpOnly: true },
+    cookie: { maxAge: 600000, httpOnly: true },
     secret: 'secret here',
     saveUninitialized: true,
 }))
@@ -38,7 +39,7 @@ require('./utils/passport.auth')
 
 // Routes
 app.use('/', router)
-// app.use('/user', user)
+app.use('/pass', passApi)
 app.use('/admin/dashboard', ensureLoggedIn({ redirectTo: '/' }), auth.ensureAdmin, admin)
 app.use('/user', ensureLoggedIn({ redirectTo: '/' }), user)
 

@@ -3,8 +3,7 @@ const passport = require('passport')
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login')
 const router = express.Router()
 const controller = require('../controllers/login.controller')
-const username = require('../middleware/usernameVerification')
-const { roles } = require('../utils/roleAuth')
+const userEmail = require('../middleware/userEmailVerification')
 
 // Render logIn page
 router.get('/', (req, res) => { return res.render('logIn') },)
@@ -13,7 +12,7 @@ router.get('/', (req, res) => { return res.render('logIn') },)
 router.get('/create', (req, res) => { return res.render('createLogin') })
 
 // Create login credentails
-router.post('/createLogin', username.duplicateUsername, controller.createLoginCredentials)
+router.post('/createLogin', userEmail.duplicateUserEmail, controller.createLoginCredentials)
 
 // Posting
 router.post('/logIn', ensureLoggedOut({ redirectTo: '/' }),

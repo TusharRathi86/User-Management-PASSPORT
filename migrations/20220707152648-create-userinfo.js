@@ -14,9 +14,6 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      email: {
-        type: Sequelize.STRING
-      },
       phoneNumber: {
         type: Sequelize.DOUBLE
       },

@@ -1,24 +1,21 @@
 'use strict';
-const { roles } = require('../utils/constants')
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('logininfos', {
+    await queryInterface.createTable('otps', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      password: {
+      otpId: {
+        type: Sequelize.INTEGER
+      },
+      otp: {
+        type: Sequelize.INTEGER
+      },
+      expiryDate: {
         type: Sequelize.STRING
-      },
-      Role: {
-        type: Sequelize.STRING,
-        enum: [roles.admin, roles.client],
-        defaultValue: roles.client,
-      },
-      email: {
-        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +28,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('logininfos');
+    await queryInterface.dropTable('otps');
   }
 };

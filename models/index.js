@@ -39,8 +39,11 @@ db.Sequelize = Sequelize;
 // Tables 
 db.userinfos = require('../models/userinfo')(sequelize, DataTypes)
 db.logininfos = require('../models/logininfo')(sequelize, DataTypes)
+db.otps = require('../models/otp')(sequelize, DataTypes)
 
 // Associations
+
+// <!-- For records --!>
 db.logininfos.hasMany(db.userinfos, { foreignKey: 'userId' })
 db.userinfos.belongsTo(db.logininfos, { foreignKey: 'userId' })
 

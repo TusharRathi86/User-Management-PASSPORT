@@ -24,8 +24,8 @@
         </div>
         <form id="myform" class="form" name="userform" method="post" action="/logIn">
             <div class="form-control">
-                <label for="username">Username</label>
-                <input type="text" placeholder="Enter your username" id="username" name="username"
+                <label for="username">Email</label>
+                <input type="text" placeholder="Enter your username" id="email" name="email"
                     onpaste="return false" />
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
@@ -48,7 +48,9 @@
             <button>
                 Submit <i class="fa-solid fa-arrow-right-to-bracket"></i>
             </button>
-
+            <br>
+            <a href="/pass/forgetPass">forget password?</a>
+            <br>
             <center>
                 <!-- Displays logout message -->
                 <% if(locals.logout){ %>

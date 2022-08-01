@@ -5,14 +5,11 @@ const { validationResult } = require('express-validator')
 const { roles } = require('../utils/constants')
 
 exports.viewUsers = (req, res) => {
-
     const person = req.user
-    console.log(person)
-
     User.findAll({
         include: [{
             model: logUser,
-            attributes: ['username'],
+            attributes: ['email'],
             required: true,
         }],
         where: { userId: req.user.id },
@@ -29,14 +26,16 @@ exports.addUser = async (req, res) => {
     }
     else {
         // User Table
-        await User.create({
-            userId: req.user.id,
-            name: req.body.name,
-            email: req.body.email,
-            phoneNumber: req.body.phoneNumber,
-            address: req.body.address,
-            image: req.file.filename,
-        })
+        await User.create(
+            {
+                userId: req.user.id,
+                name: req.body.name,
+                phoneNumber: req.body.phoneNumber,
+                address: req.body.address,
+                image: req.file.filename,
+            },
+            { where: { id: req.user.id } })
+
         req.flash('success', `${req.body.name} has been added successfully`)
         return res.redirect('/user')
     }
@@ -44,6 +43,11 @@ exports.addUser = async (req, res) => {
 
 exports.change_form = (req, res) => {
     User.findOne({
+        include: [{
+            model: logUser,
+            attributes: ['email'],
+            required: true,
+        }],
         where: { id: req.params.id }
     }).then(getUser => res.render('change', { data: getUser }))
 }
