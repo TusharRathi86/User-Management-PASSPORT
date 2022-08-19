@@ -3,14 +3,14 @@ const app = express()
 const PORT = process.env.PORT || 3000
 const flash = require('connect-flash')
 const session = require('express-session')
-const user = require('./routes/newUser.routes')
-const admin = require('./routes/admin.routes')
-const passApi = require('./routes/API/forgetPassword.routes')
-const router = require('./routes/logIn.routes')
 const path = require('path')
 const passport = require('passport');
 const { ensureLoggedIn } = require('connect-ensure-login')
 const auth = require('./utils/roleAuth')
+const user = require('./routes/newUser.routes')
+const admin = require('./routes/admin.routes')
+const passApi = require('./routes/API/forgetPassword.routes')
+const router = require('./routes/logIn.routes')
 require('dotenv').config();
 
 // Middleware 
