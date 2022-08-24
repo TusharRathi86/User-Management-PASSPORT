@@ -1,5 +1,5 @@
 node_modules
 .env
-package-lock
-package
+package-lock.json
+package.json
 DB
