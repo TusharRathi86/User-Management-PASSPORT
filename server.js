@@ -11,6 +11,8 @@ const user = require('./routes/newUser.routes')
 const admin = require('./routes/admin.routes')
 const passApi = require('./routes/API/forgetPassword.routes')
 const router = require('./routes/logIn.routes')
+
+// Environment variables.
 require('dotenv').config();
 
 // Middleware 
