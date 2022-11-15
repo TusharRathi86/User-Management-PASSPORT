@@ -75,5 +75,5 @@ exports.changePassword = async (req, res) => {
         password: hashPassword
     },
         { where: { email: req.body.email } })
-    res.render('client/changePass', { key: 'success', messagesCre: 'Password Updated successfully!' })
+    res.render('logIn', { key: 'success', messagesCre: 'Password Updated successfully!' })
 }

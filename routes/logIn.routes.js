@@ -6,7 +6,7 @@ const controller = require('../controllers/login.controller')
 const userEmail = require('../middleware/userEmailVerification')
 
 // Render logIn page
-router.get('/', (req, res) => { return res.render('logIn') },)
+router.get('/', (req, res) => { return res.render('logIn') })
 
 // Render createLogin page
 router.get('/create', (req, res) => { return res.render('createLogin') })

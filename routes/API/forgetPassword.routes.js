@@ -3,10 +3,11 @@ const express = require('express')
 const router = express.Router()
 
 // Render forget password page
-router.get('/forgetPass', (req, res) => { return res.render('client/forgetPass') },)
+router.get('/forgetPass', (req, res) => { return res.render('client/forgetPass') })
 
 // Render change password page
-router.get('/changePass', (req, res) => { return res.render('client/changePass') },)
+router.get('/changePass', (req, res) => { return res.render('client/changePass') })
+
 
 // Verify mail
 router.post('/verifyMail', controller.forgetPassword)

@@ -3,7 +3,7 @@
 
 <head>
 
-    <title> Add Page </title>
+    <title> Change Password Page </title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
@@ -37,29 +37,29 @@
 
                 <div class="form-group" id="password">
                     <label> Password </label><br>
-                    <input type="text" name="password" class="form-control">
+                    <input type="password" name="password" class="form-control">
                     <span class="text-danger formError"></span>
                 </div>
 
                 <div class="form-group" id="cpassword">
-                    <label>Confirm Password </label><br>
-                    <input type="tel" name="cpassword" class="form-control">
+                    <label>Confirm Password</label><br>
+                    <input type="password" name="cpassword" class="form-control">
                     <span class="text-danger formError"></span>
                 </div>
 
                 <center>
                     <input type="submit" name="submit" value="Submit" class="btn btn-dark">
-                    <a href="/">
+                    <!-- <a href="/pass/returnToLogIn">
                         <button class="btn btn-dark">
                             <i class="fa-solid fa-arrow-right-to-bracket"></i>
                         </button>
-                    </a>
+                    </a> -->
                 </center>
             </form>
         </div>
     </div>
     <br>
-    <center>
+    <!-- <center>
         <% if(locals.messagesCre) { %>
             <div class="container-lg pt-4 alert col-4 alert-<%= key %>">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -67,4 +67,4 @@
                     <%= messagesCre %>
                 </p>
                 <% } %>
-    </center>
+    </center> -->

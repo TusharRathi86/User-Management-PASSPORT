@@ -67,6 +67,14 @@
             </center>
 
             <center>
+                <% if(locals.messagesCre) { %>
+                    <p>
+                        <%= messagesCre %>
+                    </p>
+                    <% } %>
+            </center>
+
+            <center>
                 <%- include('./include/flashMessages') -%>
             </center>
 
